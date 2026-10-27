@@ -96,7 +96,7 @@ function lista(){
   const rows=A.filter(a=>a.campionato===st.lega).slice().sort((x,y)=>st.sort==='p'?(y.ufficiale-x.ufficiale)||(V(y)-V(x)):(DV(y)-DV(x)));
   const ag=new Date(D.aggiornato);
   return `<header><h1>Termometro Panchine</h1><p class="sub">Probabilità che l'allenatore lasci la panchina ${st.m==='s'?'entro la fine della stagione':'prima della prossima partita'}</p>
-  <p class="agg">Aggiornato ${ag.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'})} · ${ag.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})}</p></header>
+  <p class="agg">Numeri aggiornati a ${ag.toLocaleDateString('it-IT',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Rome'})}, ore ${ag.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'})}.</p></header>
   ${STAGIONE_ATTIVA?`<section class="sec" style="padding-bottom:0">${metrica()}</section>`:''}
   <section class="sec"><h2 class="lab">Panchine più calde</h2><div class="hot">${hot.map(a=>`<a class="card" href="#${slug(a.squadra)}">
    <div style="display:flex;align-items:center;gap:6px">${badge(a.squadra)}<span style="font-size:12px;color:var(--mut)">${a.campionato}</span></div>
