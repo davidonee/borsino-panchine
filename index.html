@@ -78,7 +78,7 @@ Palermo:['#E6A1B6','#111'],Pisa:['#1B2D5A','#fff'],Sampdoria:['#1B4F9C','#fff'],
 const SIG={Juventus:'JUV',Inter:'INT',Milan:'MIL','Juve Stabia':'JST','Virtus Entella':'ENT',Sudtirol:'SUD',Sampdoria:'SAM',Sassuolo:'SAS',Catanzaro:'CTZ',Cremonese:'CRE',Cesena:'CES',Carrarese:'CAR'};
 const slug=s=>s.normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const pct=x=>(x>=10?x.toFixed(0):x>=1?x.toFixed(1):x>=0.1?x.toFixed(1):'<0,1').replace('.',',')+'%';   // mai 0%: statisticamente non è mai zero
+const pct=x=>(x>=0.1?x.toFixed(1):'<0,1').replace('.',',')+'%';   // mai 0%: statisticamente non è mai zero
 let D=null, st={lega:'Serie A',sort:'p',chart:false,m:'p'};
 try{const v=JSON.parse(localStorage.getItem('bp')||'{}');Object.assign(st,{lega:v.lega||st.lega,sort:v.sort||st.sort,m:STAGIONE_ATTIVA?(v.m||st.m):'p'})}catch(e){}
 const save=()=>{try{localStorage.setItem('bp',JSON.stringify({lega:st.lega,sort:st.sort,m:st.m}))}catch(e){}};
